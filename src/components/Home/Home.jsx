@@ -1,9 +1,14 @@
+import Banner from "../Banner/Banner";
+import CategoryList from "../CategoryList/CategoryList";
+import FeaturedJobs from "../FeaturedJobs/FeaturedJobs";
 
 
 export default function Home() {
   return (
     <div>
-      <h2>Hello ftom home</h2>
+      <Banner />
+      <CategoryList />
+      <FeaturedJobs />
     </div>
   )
 }
