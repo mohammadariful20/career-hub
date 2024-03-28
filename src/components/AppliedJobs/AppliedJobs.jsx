@@ -1,11 +1,14 @@
 import { useLoaderData } from "react-router-dom"
 import { getLsJob } from "../utility/utility"
 import { useEffect, useState } from "react"
+import Applyed from "../Applyed/Applyed";
 
 export default function AppliedJobs() {
   const [applyjobs,setApplyJobs]=useState([])
   
-  const jobs=useLoaderData()
+    const loaderData = useLoaderData();
+  const jobs = loaderData || [];
+
   useEffect(() => {
     const applyid=getLsJob('applyed')
     const apply=[]
@@ -16,16 +19,12 @@ export default function AppliedJobs() {
       }
       setApplyJobs(apply)
     }, [])
-console.log('========',applyjobs.flat())
-
   return (
     <div>
       <h2 className="text-center my-20 text-2xl font-bold">Applied Jobs : {applyjobs.length}</h2>
       <div className="">
      {
-      applyjobs.flat().map(job=>{
-        return <h2 key={job.id}>{job.job_title}</h2>
-      })
+      applyjobs.flat().map(job=><Applyed key={job.id} job={job}></Applyed>)
      }
       </div>
     </div>

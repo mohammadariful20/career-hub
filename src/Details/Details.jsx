@@ -1,6 +1,9 @@
 import React from 'react'
 import { NavLink, useLoaderData, useParams } from 'react-router-dom'
-import { setLsJob } from '../components/utility/utility'
+import { getLsJob, setLsJob } from '../components/utility/utility'
+  import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function Details() {
     
@@ -10,6 +13,14 @@ export default function Details() {
     const { job_title, salary, job_description, job_responsibility, educational_requirements, experiences, contact_information} = job;
 
     const handleApply = (id) => {
+        const applyJobs=getLsJob('applyed')
+        for(let idj of applyJobs) {
+          if(idj===id){
+            toast.error('You have already applied for this job !')    
+            return
+          }
+        }
+        toast.success('Applied Success')
         setLsJob(id,'applyed')
     }
     
@@ -34,8 +45,9 @@ export default function Details() {
                             <p className='text-[#474747]'>Phone : <span className="text-[#757575]">{contact_information.phone}</span></p>
                             <p className='text-[#474747]'>Email : <span className="text-[#757575]">{contact_information.email}</span></p>
                             <p className='text-[#474747]'>address : <span className="text-[#757575]">{contact_information.address}</span></p>
+                            <ToastContainer />
                             <div className="card-actions">
-                                <NavLink to='/Applied' onClick={()=>handleApply(job.id)} className="btn bg-gradient-to-r from-[#7E90FE] to-[#9873FF] w-full text-white my-4">Apply Now</NavLink>
+                                <button onClick={()=>handleApply(job.id)} className="btn bg-gradient-to-r from-[#7E90FE] to-[#9873FF] w-full text-white my-4">Apply Now</button>
                             </div>
                         </div>
                     </div>
