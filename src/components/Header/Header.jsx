@@ -23,12 +23,12 @@ export default function Header() {
                     <a className="btn btn-ghost text-xl">CareerHub</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 gap-8">
+                    <ul className="menu menu-horizontal px-1 gap-8 items-center">
                        {link}
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Star Applying</a>
+                    <a className="btn bg-gradient-to-r from-[#7E90FE] to-[#9873FF] text-white">Star Applying</a>
                 </div>
             </div>
         </>

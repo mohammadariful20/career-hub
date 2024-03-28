@@ -1,5 +1,9 @@
 /* styles.css */
 .active {
   font-weight: bold;
-  color: #7E90FE;
+  color: #7e90fe;
+  padding: 8px 26px;
+  border: 1px solid #7e90fe;
+  border-radius: 10px;
+  
 }

@@ -1,15 +1,16 @@
 import { IoLocationOutline } from "react-icons/io5";
 import { AiOutlineDollarCircle } from "react-icons/ai";
+import { NavLink } from "react-router-dom";
 
 export default function Jobs({ jobs }) {
-    const { logo,job_title,company_name ,job_type,remote_or_onsite,location,salary} = jobs
+    const { logo, job_title, company_name, job_type, remote_or_onsite, location, salary, id } = jobs
     return (
         <div>
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-96 bg-base-100 shadow-xl my-8">
                 <figure><img src={logo} alt="job" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">
-                       {job_title}
+                        {job_title}
                         <div className="badge badge-secondary">NEW</div>
                     </h2>
                     <p className=''>{company_name}</p>
@@ -24,7 +25,7 @@ export default function Jobs({ jobs }) {
                         <p className="ml-2">{salary}</p>
                     </div>
                     <div className="card-actions  my-4">
-                        <div className="btn badge-outline">View Details</div>
+                        <NavLink to={`details/${id}`}><button className="btn badge-outline">View Details</button></NavLink>
                     </div>
                 </div>
             </div>
