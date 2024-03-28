@@ -1,11 +1,18 @@
 import React from 'react'
-import { useLoaderData, useParams } from 'react-router-dom'
+import { NavLink, useLoaderData, useParams } from 'react-router-dom'
+import { setLsJob } from '../components/utility/utility'
 
 export default function Details() {
+    
     const { id } = useParams()
     const jobs = useLoaderData()
     const job = jobs.find((jb) => jb.id == id)
-    const { job_title, salary, job_description, job_responsibility, educational_requirements, experiences, contact_information } = job
+    const { job_title, salary, job_description, job_responsibility, educational_requirements, experiences, contact_information} = job;
+
+    const handleApply = (id) => {
+        setLsJob(id,'applyed')
+    }
+    
 
     return (
         <div>
@@ -28,7 +35,7 @@ export default function Details() {
                             <p className='text-[#474747]'>Email : <span className="text-[#757575]">{contact_information.email}</span></p>
                             <p className='text-[#474747]'>address : <span className="text-[#757575]">{contact_information.address}</span></p>
                             <div className="card-actions">
-                                <button className="btn bg-gradient-to-r from-[#7E90FE] to-[#9873FF] w-full text-white my-4">Buy Now</button>
+                                <NavLink to='/Applied' onClick={()=>handleApply(job.id)} className="btn bg-gradient-to-r from-[#7E90FE] to-[#9873FF] w-full text-white my-4">Apply Now</NavLink>
                             </div>
                         </div>
                     </div>
